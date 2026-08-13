@@ -1,10 +1,10 @@
-# 🤷 Perchance as a Service
+# Perchance as a Service
 
-Ever needed a graceful way to say “maybe”?
+Ever needed a way to say “maybe”?
 
-This tiny API returns random, generic, creative, and sometimes needlessly elaborate ways to avoid committing to an answer — perfect for personal plans, professional roadmaps, pull requests, production deploys, or deciding where to eat.
+This API returns random, generic, creative, and sometimes needlessly elaborate ways to avoid committing to an answer. Perfect for personal plans, professional roadmaps, pull requests, production deploys, or deciding where to eat.
 
-Built for humans, hedging, and decisions you would rather make later.
+Built for decisions you know damn well you'd rather make later.
 
 <p align="center">
   <img src="./assets/imgs/you-cant-just-say-perchance.png" alt="You can't just say perchance" width="422">
@@ -64,6 +64,8 @@ There are **212** unique responses, including:
 - `Perhaps.`
 - `Perchance.`
 - `There is a non-zero chance.`
+- 'The stars have opened a ticket.'
+- 'Fuck if I know',
 - `The committee has declined to commit.`
 - `The roadmap includes an optional yes.`
 - `Ask again when causality settles down.`
@@ -130,7 +132,7 @@ npm run check
 npm run audit:production
 ```
 
-Docker is also available for enterprise-grade containerized hesitation:
+Docker is also available for enterprise-grade containerized hesitation (if you really want that):
 
 ```bash
 docker build -t perchance-as-a-service .
@@ -141,7 +143,7 @@ docker run --rm -p 3000:3000 perchance-as-a-service
 
 ## ☁️ Deploying
 
-The public service runs on a Cloudflare Worker. To deploy your own:
+The public service runs on a Cloudflare Worker (unpaid of course). To deploy your own:
 
 ```bash
 npx wrangler login
@@ -173,7 +175,7 @@ There is no database, account system, LLM, or user-generated content. Adding any
 
 ### Is this production-ready?
 
-Signs point ambiguously.
+Mayhaps.
 
 ### Can I depend on it for important decisions?
 
