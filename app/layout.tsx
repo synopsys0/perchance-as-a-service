@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 
+const siteDescription = "A tiny open-source API that returns a random “maybe” over HTTP.";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -22,18 +24,18 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase,
     title: "Perchance as a Service",
-    description: "Enterprise-grade uncertainty over HTTP.",
+    description: siteDescription,
     applicationName: "Perchance as a Service",
     openGraph: {
       title: "Perchance as a Service",
-      description: "Enterprise-grade uncertainty over HTTP.",
+      description: siteDescription,
       type: "website",
-      images: [{ url: "/og.png", width: 1200, height: 630, alt: "Maybe. As a Service." }],
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "Perchance. As a Service." }],
     },
     twitter: {
       card: "summary_large_image",
       title: "Perchance as a Service",
-      description: "Enterprise-grade uncertainty over HTTP.",
+      description: siteDescription,
       images: ["/og.png"],
     },
   };
