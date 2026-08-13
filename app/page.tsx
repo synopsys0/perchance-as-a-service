@@ -16,6 +16,13 @@ export default function Home() {
         <div className="nav-links">
           <a href="#api">API</a>
           <a href="#principles">Principles</a>
+          <a
+            href="https://github.com/synopsys0/perchance-as-a-service"
+            target="_blank"
+            rel="noreferrer"
+          >
+            View on GitHub ↗
+          </a>
           <span className="status"><i /> Probably operational</span>
         </div>
       </nav>
@@ -93,7 +100,11 @@ export default function Home() {
 
       <footer>
         <div className="brand footer-brand"><span className="brand-mark">P</span><span>Perchance as a Service</span></div>
-        <p>Not affiliated with Perchance.org.<br />Inspired by No-as-a-Service.</p>
+        <div className="footer-links">
+          <a href="https://github.com/synopsys0/perchance-as-a-service" target="_blank" rel="noreferrer">View on GitHub ↗</a>
+          <a href="https://github.com/synopsys0/perchance-as-a-service" target="_blank" rel="noreferrer">Star the repo ↗</a>
+          <p>Not affiliated with Perchance.org.<br />Inspired by No-as-a-Service.</p>
+        </div>
         <p className="footer-note">Built with conviction.<br />Deployed with uncertainty.</p>
       </footer>
     </main>

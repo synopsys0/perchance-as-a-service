@@ -4,7 +4,7 @@
   "private": true,
   "description": "Enterprise-grade uncertainty over HTTP.",
   "engines": {
-    "node": ">=22.13.0"
+    "node": ">=26.0.0"
   },
   "scripts": {
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
