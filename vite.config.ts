@@ -1,10 +1,8 @@
 import vinext from "vinext";
-import { resolve } from "node:path";
 import { defineConfig } from "vite";
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
-const isTestBuild = process.env.PERCHANCE_TEST === "1";
 
 export default defineConfig(async () => {
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
@@ -17,13 +15,6 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
-    resolve: isTestBuild
-      ? {
-          alias: {
-            "cloudflare:workers": resolve("tests/cloudflare-workers.mock.ts"),
-          },
-        }
-      : undefined,
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,

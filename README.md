@@ -58,14 +58,14 @@ No account. No API key. No artificial intelligence. No decision.
 
 ## 🎰 Possible possibilities
 
-There are **212** unique responses, including:
+There are **213** unique responses, including:
 
 - `Maybe.`
 - `Perhaps.`
 - `Perchance.`
 - `There is a non-zero chance.`
-- 'The stars have opened a ticket.'
-- 'Fuck if I know',
+- `The stars have opened a ticket.`
+- `Fuck if I know`
 - `The committee has declined to commit.`
 - `The roadmap includes an optional yes.`
 - `Ask again when causality settles down.`
@@ -161,8 +161,7 @@ The edge rate limiter lives in [`wrangler.jsonc`](./wrangler.jsonc), where it ca
 perchance-as-a-service/
 ├── app/                 # Website and API routes
 ├── assets/imgs/         # Documentary evidence
-├── maybes.json          # 212 ways to avoid a straight answer
-├── tests/               # Trust, but remain uncertain
+├── maybes.json          # 213 ways to avoid a straight answer
 ├── worker/              # Cloudflare Worker entry point
 └── wrangler.jsonc       # Edge-flavored configuration
 ```

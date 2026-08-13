@@ -61,7 +61,7 @@ These are garnish, not MVP requirements:
 - Occasionally return “It depends.”
 - Report uptime as “probably operational” on the landing page.
 
-Do not let gag endpoints complicate the API or tests.
+Do not let gag endpoints complicate the API.
 
 ## Implementation
 
@@ -75,8 +75,6 @@ perchance-as-a-service/
 │   ├── maybe/route.ts
 │   ├── healthz/route.ts
 │   └── definitely/route.ts
-├── tests/
-│   └── app.test.mjs
 ├── package.json
 ├── Dockerfile
 ├── README.md
@@ -139,11 +137,9 @@ It should include:
 
 ### 2. Verification
 
-- Test the response schema.
-- Test that every corpus entry is a non-empty string.
-- Test health and error responses.
-- Test the configured rate limit.
-- Run the service locally and exercise it with `curl`.
+- Lint and type-check the source.
+- Produce a clean production build.
+- Run the service locally and exercise its routes with `curl`.
 
 ### 3. Packaging
 
@@ -167,7 +163,7 @@ It should include:
 - The API has no runtime dependency on a database or external AI service.
 - Invalid routes return consistent JSON errors.
 - A contributor can add a response by editing only `maybes.json`.
-- Tests cover the API, corpus validation, health check, and rate limiting.
+- Lint, type checking, and the production build pass.
 - The README explains the entire joke and shows a working request in its first screen.
 
 ## Scope guardrail
