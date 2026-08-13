@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "perchance",
+  "main": "./worker/index.ts",
+  "compatibility_date": "2026-08-13",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "observability": {
+    "enabled": false
+  },
+  "ratelimits": [
+    {
+      "name": "MAYBE_RATE_LIMITER",
+      "namespace_id": "20260813",
+      "simple": {
+        "limit": 120,
+        "period": 60
+      }
+    }
+  ]
+}
