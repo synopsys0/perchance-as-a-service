@@ -1,24 +1,5 @@
 import corpus from "@/maybes.json";
-
-function validateCorpus(value: unknown): asserts value is string[] {
-  if (!Array.isArray(value) || value.length === 0) {
-    throw new Error("maybes.json must contain a non-empty array");
-  }
-
-  const seen = new Set<string>();
-  for (const entry of value) {
-    if (typeof entry !== "string" || entry.trim().length === 0) {
-      throw new Error("Every maybe must be a non-empty string");
-    }
-    if (entry.length > 280) {
-      throw new Error(`Maybe exceeds 280 characters: ${entry}`);
-    }
-    if (seen.has(entry)) {
-      throw new Error(`Duplicate maybe: ${entry}`);
-    }
-    seen.add(entry);
-  }
-}
+import { validateCorpus } from "./validate-corpus.js";
 
 validateCorpus(corpus);
 

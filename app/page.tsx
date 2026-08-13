@@ -1,3 +1,4 @@
+import { ApiExample } from "./api-example";
 import { MaybeMachine } from "./maybe-machine";
 import { maybes, pickMaybe } from "./lib/maybes";
 
@@ -67,11 +68,7 @@ export default function Home() {
           <h2>One endpoint.<br />You’ll manage.</h2>
           <p>Send a request. Receive a professionally noncommittal response. Continue avoiding the issue at scale.</p>
         </div>
-        <div className="code-window">
-          <div className="code-tabs"><span className="active">cURL</span><span>JavaScript</span><span>Python</span></div>
-          <pre><code><span className="code-muted">$</span> curl https://perchance.synopsys0.workers.dev/maybe{"\n\n"}<span className="code-muted">HTTP/2 200</span>{"\n"}<span className="code-key">content-type:</span> application/json{"\n\n"}{`{`}{"\n"}  <span className="code-key">&quot;answer&quot;</span>: <span className="code-value">&quot;Perchance.&quot;</span>{"\n"}{`}`}</code></pre>
-          <div className="code-note"><span>GET</span><code>/maybe</code><em>No API key required</em></div>
-        </div>
+        <ApiExample />
       </section>
 
       <section className="principles" id="principles">

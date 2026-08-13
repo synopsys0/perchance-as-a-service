@@ -58,7 +58,7 @@ No account. No API key. No artificial intelligence. No decision.
 
 ## 🎰 Possible possibilities
 
-There are **213** unique responses, including:
+There are **200+** unique responses, including:
 
 - `Maybe.`
 - `Perhaps.`
@@ -161,7 +161,7 @@ The edge rate limiter lives in [`wrangler.jsonc`](./wrangler.jsonc), where it ca
 perchance-as-a-service/
 ├── app/                 # Website and API routes
 ├── assets/imgs/         # Documentary evidence
-├── maybes.json          # 213 ways to avoid a straight answer
+├── maybes.json          # 200+ ways to avoid a straight answer
 ├── worker/              # Cloudflare Worker entry point
 └── wrangler.jsonc       # Edge-flavored configuration
 ```

@@ -449,10 +449,29 @@ a:focus-visible {
   text-transform: uppercase;
 }
 
-.code-tabs span {
+.code-tabs button {
   height: 52px;
+  padding: 0;
   display: flex;
   align-items: center;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.code-tabs button:hover,
+.code-tabs button:focus-visible {
+  color: #dce5e0;
+}
+
+.code-tabs button:focus-visible {
+  outline: 2px solid var(--acid);
+  outline-offset: -5px;
 }
 
 .code-tabs .active {
