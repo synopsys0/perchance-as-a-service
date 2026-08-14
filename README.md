@@ -22,6 +22,8 @@ You can now.
 https://perchance.synopsys0.workers.dev/maybe
 ```
 
+For machine-readable API documentation, see the [`openapi.yaml`](./openapi.yaml) specification.
+
 - **Method:** `GET`
 - **Rate limit:** `120 requests per minute per client`
 - **Commitment level:** negligible

@@ -1,0 +1,163 @@
+openapi: 3.1.0
+info:
+  title: Perchance as a Service
+  description: A tiny open-source API that returns a random “maybe”.
+  version: 1.0.1
+  license:
+    name: MIT
+    url: https://github.com/synopsys0/perchance-as-a-service/blob/main/LICENSE
+
+servers:
+  - url: https://perchance.synopsys0.workers.dev
+    description: Production
+
+tags:
+  - name: Maybe
+    description: Ways to avoid committing to an answer.
+  - name: System
+    description: Service status and certainty checks.
+
+paths:
+  /maybe:
+    get:
+      tags:
+        - Maybe
+      operationId: getMaybe
+      summary: Return a random maybe
+      description: Returns a curated maybe as JSON by default, or as plain text when requested.
+      parameters:
+        - name: format
+          in: query
+          required: false
+          description: Choose the response format.
+          schema:
+            type: string
+            enum:
+              - json
+              - text
+            default: json
+      responses:
+        "200":
+          description: A random response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MaybeResponse"
+              examples:
+                maybe:
+                  value:
+                    answer: Perchance.
+            text/plain:
+              schema:
+                type: string
+              example: "Perchance.\n"
+        "400":
+          description: The requested response format is not supported.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                error: Unsupported format. The possibilities are json and text.
+        "429":
+          description: The client has exceeded the rate limit.
+          headers:
+            Retry-After:
+              description: Number of seconds to wait before trying again.
+              schema:
+                type: integer
+                example: 60
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                error: Too many possibilities. Please remain uncertain for a moment.
+    options:
+      tags:
+        - Maybe
+      operationId: preflightMaybe
+      summary: Return CORS preflight headers
+      responses:
+        "204":
+          description: No content. The response contains the CORS headers needed for a preflight request.
+
+  /healthz:
+    get:
+      tags:
+        - System
+      operationId: getHealth
+      summary: Check service health
+      responses:
+        "200":
+          description: The service is probably operational.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+              example:
+                status: probably operational
+    options:
+      tags:
+        - System
+      operationId: preflightHealth
+      summary: Return CORS preflight headers
+      responses:
+        "204":
+          description: No content. The response contains the CORS headers needed for a preflight request.
+
+  /definitely:
+    get:
+      tags:
+        - System
+      operationId: getDefinitely
+      summary: Fail to return certainty
+      description: This endpoint intentionally returns 404 because certainty could not be found.
+      responses:
+        "404":
+          description: Certainty not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                error: Certainty not found.
+    options:
+      tags:
+        - System
+      operationId: preflightDefinitely
+      summary: Return CORS preflight headers
+      responses:
+        "204":
+          description: No content. The response contains the CORS headers needed for a preflight request.
+
+components:
+  schemas:
+    MaybeResponse:
+      type: object
+      required:
+        - answer
+      properties:
+        answer:
+          type: string
+          description: A randomly selected response from the curated maybe corpus.
+      additionalProperties: false
+
+    HealthResponse:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          const: probably operational
+      additionalProperties: false
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+      additionalProperties: false
