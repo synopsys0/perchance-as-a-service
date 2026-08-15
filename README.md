@@ -22,7 +22,7 @@ You can now.
 https://perchance.synopsys0.workers.dev/maybe
 ```
 
-For machine-readable API documentation, see the [`openapi.yaml`](./openapi.yaml) specification.
+For machine-readable API documentation, see the [`openapi.yaml`](./openapi.yaml) specification. You can use the [public Postman collection](https://www.postman.com/perchance-as-a-service/perchance-as-a-service-workspace/collection/57424998-875e6a50-18ed-4114-947f-0ed6c2f43002) for ready-to-run requests and tests, or import the [collection JSON](./postman/perchance-as-a-service.postman_collection.json) directly.
 
 - **Method:** `GET`
 - **Rate limit:** `120 requests per minute per client`

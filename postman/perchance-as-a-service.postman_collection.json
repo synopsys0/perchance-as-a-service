@@ -1,0 +1,218 @@
+{
+  "info": {
+    "name": "Perchance as a Service",
+    "description": "A tiny open-source API that returns a random maybe. No authentication required.\n\nSet the baseUrl collection variable to point to another deployment when self-hosting.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://perchance.synopsys0.workers.dev"
+    }
+  ],
+  "item": [
+    {
+      "name": "GET /maybe (JSON)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "Return a random maybe as a JSON object.",
+        "url": {
+          "raw": "{{baseUrl}}/maybe",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "maybe"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Returns HTTP 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Returns an answer', function () {",
+              "    const body = pm.response.json();",
+              "    pm.expect(body.answer).to.be.a('string').and.not.empty;",
+              "});"
+            ]
+          }
+        }
+      ],
+      "response": [
+        {
+          "name": "Example response",
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"answer\": \"Perchance.\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "GET /maybe (text)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "Return a random maybe as plain text.",
+        "url": {
+          "raw": "{{baseUrl}}/maybe?format=text",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "maybe"
+          ],
+          "query": [
+            {
+              "key": "format",
+              "value": "text"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Returns HTTP 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Returns non-empty text', function () {",
+              "    pm.expect(pm.response.text().trim()).to.not.be.empty;",
+              "});"
+            ]
+          }
+        }
+      ],
+      "response": [
+        {
+          "name": "Example response",
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain; charset=utf-8"
+            }
+          ],
+          "body": "Perchance.\n"
+        }
+      ]
+    },
+    {
+      "name": "GET /healthz",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "Check whether the service is probably operational.",
+        "url": {
+          "raw": "{{baseUrl}}/healthz",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "healthz"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Returns HTTP 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Reports probable operation', function () {",
+              "    pm.expect(pm.response.json().status).to.eql('probably operational');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "response": [
+        {
+          "name": "Example response",
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"status\": \"probably operational\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "GET /definitely (404 by design)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "Demonstrate that certainty could not be found.",
+        "url": {
+          "raw": "{{baseUrl}}/definitely",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "definitely"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Returns the expected 404', function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "",
+              "pm.test('Explains the missing certainty', function () {",
+              "    pm.expect(pm.response.json().error).to.eql('Certainty not found.');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "response": [
+        {
+          "name": "Example response",
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"error\": \"Certainty not found.\"\n}"
+        }
+      ]
+    }
+  ]
+}
